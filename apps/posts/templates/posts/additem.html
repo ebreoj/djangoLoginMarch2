@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>add item</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        textarea {
+            resize: 500px;}
+
+    </style>
+</head>
+<body>
+    <a class="nav-link" href="/dashboard">Home</a>
+    <a class="nav-link" href="/logout">Logout</a>
+<div class="container">
+     <form action="/create" method="post">
+        {% csrf_token %}
+        <label>Contribute a Qoutes</label><br>
+        <!-- <input type="text" name="itemname" class=""><br>
+         -->
+         <textarea id="subject" name="itemname" placeholder="Write something.." style="width:300px; height:200px"></textarea><br>
+        <input type="hidden" name="addby_id" value="{{request.session.currentuser}}">
+        
+        <button type="submit" class="btn btn-primary">submit</button>
+        {% if messages %} {% for x in messages %}
+        
+        <p>{{x}}</p>
+        {% endfor %} 
+        {% endif %}
+    </form>   
+</div>
+</body>
+</html>

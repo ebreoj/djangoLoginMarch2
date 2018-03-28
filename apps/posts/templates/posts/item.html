@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Item Details</title>
+    <style>
+        .container {
+           margin: 50px; 
+           
+        }
+        .container p {
+            margin:20px;
+            font-family: verdana;
+            font-style: oblique;
+        
+        }
+
+    </style>
+</head>
+    <body>
+       <div class="container">
+            <a class="nav-link" href="/dashboard">Home</a>
+            <a class="nav-link" href="/logout">Logout</a>
+        
+        
+       
+        <p>{{item.itemname}}</p>
+        <p>Posted By:<label>{{item.added_by.username}}</label><br>
+        {% for i in useritem %}
+        </p>
+        <!-- <label>{{i.username}}</label> -->
+        {% endfor %}
+
+
+    </div>
+
+    </body>
+</html>

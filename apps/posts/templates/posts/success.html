@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Welcome</title>
+    <style>
+        h1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin: 10px;
+        }
+
+        .quotes {
+            display: block;
+        }
+        .table .table-striped p {
+            display: block;
+        }
+        h4 {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+   
+        <h1>Welcome {{currentuser.name}}!</h1>
+    <div class=header style="margin-left:800px;">
+           
+            <a class="nav-link" href="/logout">logout</a>
+    </div>
+  
+   <table class="table .table-striped">
+        <thead>
+                <tr>
+                    <p><th scopes="col">Qoutes</th></p>
+                    <th scopes="col">Posted By</th>
+                    <th scopes="col">Actions</th>
+              
+                </tr>
+                <tr>{% for i in addeditem %}
+                    <td>
+                        <a href="/{{i.id}}">{{i.itemname}}</a>
+                    </td>
+                    <td>{{i.added_by.username}}</td>
+                    <td><a href="remove/{{i.id}}">Remove from my Favlist</a></td>
+                    {% endfor %}
+                </tr>
+                
+                <tr>{% for i in myallitem %}
+                    <td>
+                        <a href="/{{i.id}}">{{i.itemname}}</a>
+                    </td>
+                    <td>{{i.added_by.username}}</td>
+                    <td>
+                        <a href="delete/{{i.id}}">Delete</a>
+                    </td>
+                </tr>{% endfor %}
+            </thead>
+        </table>
+ 
+             <div><a href="/posts/additem">Contribute a Quote:</a></div>  
+           
+    
+    <h4>Other Users' Post</h4>
+    <table class="table .table-striped">
+        <thead>
+            <tr>
+                <th scopes="col">Qoutes</th>
+                <th scopes="col">Added By</th>
+                <th scopes="col">Actions</th>
+            
+            </tr>
+            
+            <tr>{% for i in notmyitem %}
+                <td>
+                    <a href="add/{{i.id}}">{{i.itemname}}</a>
+                </td>
+                <td>{{i.added_by.username}}</td>
+                <td><a href="add/{{i.id}}">Add to my Favlist</a></td>
+            </tr>{% endfor %}
+        </thead>
+    </table>
+
+    <table class="table .table-striped">
+            <thead>
+                <tr>
+                   
+                    <th scopes="col">My Favorites</th> 
+                </tr>
+                
+                <tr>{% for i in notmyitem %}
+                    <td>
+                        <a href="add/{{i.id}}">{{i.itemname}}</a>
+                    </td>
+                    <!-- <td>{{i.added_by.username}}</td> -->
+                    <td><a href="add/{{i.id}}">Add to my Favlist</a></td>
+                </tr>{% endfor %}
+            </thead>
+        </table>
+        
+
+</body>
+</html>
